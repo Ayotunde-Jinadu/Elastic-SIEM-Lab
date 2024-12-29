@@ -60,10 +60,10 @@ Alerts in a SIEM are essential for identifying and responding to security incide
 <img src="https://i.imgur.com/QlkAJ22.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
-I used Wireshark to review the captured packets and analyze the decrypted data, focusing on the SSL handshake. This allowed me to examine the traffic in various formats, providing a detailed view of the handshake process and encrypted communications. :  <br/>
-<img src="https://imgur.com/EsvGkPU.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+To validate the effectiveness of the alert rule and the logging functionality, another Nmap scan is performed. This test generates security-related events, allowing the SIEM to detect and trigger the alert based on the predefined rule. Additionally, the scan data is logged and visualized on the dashboard, confirming the integration and accuracy of the alerting and monitoring system. :  <br/>
+<img src="https://i.imgur.com/V8gdwrN.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
-Observe the decrypted data:  <br/>
-<img src="https://imgur.com/e34VzbD.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+Following the Nmap scan test in Step 9, the SIEM timeline and dashboard data are reviewed to observe the logged events and alert triggers. The timeline provides a detailed view of the captured security events, while the dashboard visualizes patterns and trends from the earlier test. This final step confirms the successful configuration and operation of the SIEM, showcasing its ability to monitor, detect, and visualize security-related activities effectively. :  <br/>
+<img src="https://i.imgur.com/HHnrvkQ.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 </p>
