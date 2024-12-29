@@ -46,12 +46,18 @@ With data successfully forwarded from the Kali VM to the Elastic SIEM, the next 
 <img src="https://i.imgur.com/YTJYVqF.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
-I captured the private key used by the browser during an SSL handshake by setting the SSLKEYLOGFILE environment variable to specify the file path for storing private keys. This allowed the browser to log the keys used in SSL encryption. I then switched the host from google.com to nhs.uk to generate more traffic and encrypted data for capture, providing a richer dataset for analysis. :  <br/>
-<img src="https://imgur.com/xZVSOJg.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+In the Elastic SIEM, dashboards are used to visualize and analyze log data for patterns or anomalies. A custom dashboard is created to display metrics such as the count of security events over time, providing a clear and intuitive view of activity. This visualization helps in quickly identifying trends and potential security issues for more effective monitoring and analysis. :  <br/>
+<img src="https://i.imgur.com/M8g4QqG.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
-I configured the protocol by setting the TLS Pre-Master Secret log file, enabling the decryption of captured encrypted traffic. This allowed me to analyze the encrypted data in plain text for detailed examination. :  <br/>
-<img src="https://imgur.com/59yPtaJ.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+Alerts in a SIEM are essential for identifying and responding to security incidents promptly. An alert is created in the Elastic SIEM instance to detect Nmap scans by defining a custom rule that monitors logs for scan-related events. This alert is configured to trigger notifications when specific conditions, such as detecting Nmap activity, are met. By setting up this alert, the system ensures real-time detection and response to potential security threats. :  <br/>
+<img src="https://i.imgur.com/mFs03Xt.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
+<br />
+<img src="https://i.imgur.com/AdSptpq.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
+<br />
+<img src="https://i.imgur.com/lqSPMLd.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
+<br />
+<img src="https://i.imgur.com/QlkAJ22.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
 I used Wireshark to review the captured packets and analyze the decrypted data, focusing on the SSL handshake. This allowed me to examine the traffic in various formats, providing a detailed view of the handshake process and encrypted communications. :  <br/>
