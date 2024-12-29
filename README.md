@@ -3,40 +3,47 @@
 
 <h2>Description</h2>
 
-This project consists of a set of Linux scripts designed for network traffic analysis and decryption. The utility leverages TCPDump to capture TCP traffic and provides automated tools for cyber forensic investigations. The scripts enable users to capture network packets, organize and parse the data, and decrypt the content of the captured traffic for further analysis. This project simplifies the process of extracting meaningful insights from network traffic while showcasing expertise in scripting, forensics, and decryption techniques.
+This project focuses on building a home lab environment for Elastic Stack Security Information and Event Management (SIEM) using the Elastic web portal and a Kali Linux virtual machine. The goal is to gain hands-on experience with Elastic SIEM, enabling the monitoring and analysis of security events. The setup process includes configuring the Elastic web portal, preparing a Kali Linux VM, and generating security events on the VM to simulate real-world scenarios. An agent is installed and configured on the Kali VM to forward event data to the SIEM. Once data is ingested, logs are queried and analyzed directly within the Elastic SIEM interface to identify and investigate potential security issues. This project demonstrates proficiency in deploying and utilizing Elastic Stack for security monitoring and highlights skills in system setup, event generation, and log analysis.
 <br />
 
 
 <h2>Languages and Utilities Used</h2>
 
 - <b>Bash</b> 
-- <b>TCPDump</b>
-- <b>Wireshark</b>
-- <b>Tshark</b>
+- <b>Elastic Stack (Elasticsearch, Kibana, and Elastic Defend)</b>
+- <b>Kali Linux</b>
+- <b>Elastic Agent</b>
+- <b>Nmap</b>
    
 <h2>Environments Used </h2>
 
 - <b>Operating System: Kali Linux</b> (via VirtualBox on Windows 11 22H2)
-- <b>Network Environment: Local traffic capture from Google searches</b>
-- <b>Development/Testing Tools: Visual Studio Code, VirtualBox</b>
+- <b>Network Environment: A home lab network setup to simulate security events, with traffic forwarded from the Kali VM to the Elastic Stack for analysis</b>
+- <b>Development/Testing Tools: Elastic Web Portal, VirtualBox</b>
 
 <h2>Program walk-through:</h2>
 
 <p align="center">
-In this step, I used the tcpdump command to capture and analyze network traffic to and from google.com. By running sudo tcpdump -c 10 -#XXtttt host google.com, I captured 10 packets, ensuring the data was displayed in both hexadecimal and ASCII formats for detailed examination. The use of high-precision timestamps and packet counters provided clear tracking of the captured traffic, offering a structured view of the interactions with google.com. : <br/>
-<img src="https://imgur.com/NIIYMZw.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+The initial step involves creating a free account on the Elastic Cloud to set up a cloud-based Elastic instance for running the SIEM. Simultaneously, a Linux virtual machine is configured using Oracle VirtualBox with Kali Linux as the operating system, providing a local environment to interact with and analyze data through the Elastic SIEM platform. This establishes both the cloud instance and the local system required for the lab. : <br/>
+<img src="https://i.imgur.com/TskEBzh.png" height="80%" width="80%" 
+<br />
+<img src="https://i.imgur.com/timOwKb.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
-I used tcpdump to capture traffic to and from google.com and saved it to a file named capture.cpap using the -w option. To automate logging, I created a script watchdog.sh that monitored traffic and managed sequential dump files, with each file limited to 100 bytes in size using the -C 1 flag. The script ensured efficient and organized logging of captured data. :  <br/>
-<img src="https://imgur.com/xrM9S7u.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+The Elastic Agent is installed on the Kali VM to collect and forward security-related events to the Elastic SIEM instance. This involves downloading and configuring the agent software to ensure it communicates effectively with the Elastic Cloud. After installation, the agent's status is verified using the command sudo systemctl status elastic-agent.service, confirming it is active and correctly forwarding logs for analysis. This step establishes the data collection pipeline necessary for monitoring and analysis in the Elastic SIEM platform. :  <br/>
+<img src="https://i.imgur.com/eFEz27F.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
+<br /> 
+<img src="https://i.imgur.com/b9JIsYO.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
+<br /r>
+<img src="https://i.imgur.com/rmuDxxr.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
-I tested the functionality of watchdog.sh to ensure it effectively captured and logged network traffic as intended. This involved running the script, verifying that sequential dump files were created correctly based on the specified size limit, and confirming the captured data was accurate and complete. : <br/>
-<img src="https://imgur.com/lcp5j95.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+To ensure the Elastic Agent is functioning correctly, security-related events are generated on the Kali VM using Nmap, a powerful network exploration and security auditing tool. Nmap is used to scan for open ports, identify operating systems, and gather network details, creating events that the Elastic Agent forwards to the Elastic SIEM. Commands like nmap -sS <ip address>, nmap -sT <ip address>, and nmap -p- <ip address> are run to generate meaningful data. These scans produce events such as detected open ports and identified services, which validate the agent's ability to capture and forward security-relevant information. : <br/>
+<img src="https://i.imgur.com/AGKwT0w.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
-I used Wireshark to open and analyze the captured packets in greater detail, utilizing its advanced filtering and highlighting features to identify and examine any encrypted data collected by TCPdump. :  <br/>
-<img src="https://imgur.com/DTF5YC3.png" height="80%" width="80%" alt="Network Traffic Analysis & Decryption with Logging Tool Steps"/>
+With data successfully forwarded from the Kali VM to the Elastic SIEM, the next step is to query and analyze the logs within the SIEM platform. By examining the telemetry, you can identify and investigate security incidents, gaining insights into how threats are detected and managed. This process provides a practical understanding of security operations and incident response in real-world scenarios. :  <br/>
+<img src="https://i.imgur.com/YTJYVqF.png" height="80%" width="80%" alt="Elastic SIEM Lab Steps"/>
 <br />
 <br />
 I captured the private key used by the browser during an SSL handshake by setting the SSLKEYLOGFILE environment variable to specify the file path for storing private keys. This allowed the browser to log the keys used in SSL encryption. I then switched the host from google.com to nhs.uk to generate more traffic and encrypted data for capture, providing a richer dataset for analysis. :  <br/>
